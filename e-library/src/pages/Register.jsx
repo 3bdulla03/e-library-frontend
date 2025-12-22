@@ -1,7 +1,7 @@
-import { useState, React } from "react";
-import { RegisterUser } from '../services/Auth'
+import { useState, React } from "react"
+import { RegisterUser } from "../services/Auth"
 
-const Register =()=> {
+const Register = () => {
   let navigate = useNavigate()
 
   const initialVals = {
@@ -10,52 +10,52 @@ const Register =()=> {
     confirmPassword: "",
   }
 
-  const handleChange  = async (e)=>{
+  const [formValues, setFormValues] = useState(initialVals)
+
+  const handleChange = async (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // await RegisterUser({
-    //   name: formValue.name,
-    //   password: formValues.password
-    // })
-    // setFormValues(initialVals)
-    //navigate('/signin)
+    await RegisterUser(formValues)
+    setFormValues(initialState)
+    navigate("/signin")
   }
 
   return (
-  <>
+    <>
+      <form onSubmit={handleSubmit}>
+        <h2>Register</h2>
 
-    <form>
-      <h2>Register</h2>
+        <label>
+          Username
+          <input name="username" type="text" required onchange={handleChange} />
+        </label>
 
-      <label>
-        Username
-        <input
-          name="username"
-          type="text"
-          required
-        />
-      </label>
+        <label>
+          Password
+          <input
+            name="password"
+            type="password"
+            required
+            onchange={handleChange}
+          />
+        </label>
 
-      <label>
-        Password
-        <input
-          name="password"
-          type="password"
-          required
-        />
-      </label>
+        <label>
+          Confirm Password
+          <input
+            name="confirmPassword"
+            type="password"
+            required
+            onchange={handleChange}
+          />
+        </label>
 
-      <label>
-        Confirm Password
-        <input
-          name="confirmPassword"
-          type="password"
-          required
-        />
-      </label>
-
-      <button type="submit">Create Account</button>
-    </form>
-  </>
+        <button type="submit">Create Account</button>
+      </form>
+    </>
   )
 }
 
