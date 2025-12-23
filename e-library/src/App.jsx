@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react"
-import { Route, Routes } from "react-router"
-
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
 import SignIn from "./pages/SignIn"
 import Register from "./pages/Register"
-import Book from "./pages/Book"
 import Favorites from "./pages/Favorites"
 import "./App.css"
-import { Link, Route, Routes } from 'react-router-dom'
-
-import Nav from "./components/Nav"
-import Home from "./pages/Home"
-import Favorites from "./pages/Favorites"
-import BookDetails from "./pages/BookDetails"
+import { Route, Routes } from "react-router-dom"
+import { CheckSession } from "./services/Auth"
 
 const App = () => {
   const [user, setUser] = useState(null)
