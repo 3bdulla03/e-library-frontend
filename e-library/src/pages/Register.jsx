@@ -1,61 +1,93 @@
-import { useState, React } from "react"
-import { RegisterUser } from "../services/Auth"
+import { useState } from "react"
+import { RegisterUser } from "../services/Auth.js"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   let navigate = useNavigate()
-
-  const initialVals = {
+  const initialState = {
     name: "",
+    email: "",
     password: "",
     confirmPassword: "",
   }
 
-  const [formValues, setFormValues] = useState(initialVals)
+  const [formValues, setFormValues] = useState(initialState)
 
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     await RegisterUser(formValues)
     setFormValues(initialState)
     navigate("/signin")
   }
 
   return (
-    <>
+    <div className="col register">
+      <img src="/images/register.png" alt="Register Title Image" />
       <form onSubmit={handleSubmit}>
-        <h2>Register</h2>
-
-        <label>
-          Username
-          <input name="username" type="text" required onchange={handleChange} />
-        </label>
-
-        <label>
-          Password
+        <div className="input-wrapper">
+          <label htmlFor="name">Name</label>
+          <input
+            name="name"
+            type="text"
+            placeholder="full name"
+            onChange={handleChange}
+            value={formValues.name}
+            required
+            autoComplete="name"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="example@example.com"
+            onChange={handleChange}
+            value={formValues.email}
+            required
+            autoComplete="email"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="password">Password</label>
           <input
             name="password"
             type="password"
+            placeholder="password"
+            onChange={handleChange}
+            value={formValues.password}
             required
-            onchange={handleChange}
+            autoComplete="off"
           />
-        </label>
-
-        <label>
-          Confirm Password
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             name="confirmPassword"
             type="password"
+            placeholder="confirm password"
+            onChange={handleChange}
+            value={formValues.confirmPassword}
             required
-            onchange={handleChange}
+            autoComplete="off"
           />
-        </label>
-
-        <button type="submit">Create Account</button>
+        </div>
+        <button
+          disabled={
+            !formValues.email ||
+            (!formValues.password &&
+              formValues.password === formValues.confirmPassword)
+          }
+        >
+          Register
+        </button>
       </form>
-    </>
+    </div>
   )
 }
 
