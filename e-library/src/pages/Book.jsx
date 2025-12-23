@@ -1,7 +1,7 @@
 import React from "react"
 import Nav from "../components/Nav"
-const Home = () => {
+const Book = () => {
   return <></>
 }
 
-export default Home
+export default Book
