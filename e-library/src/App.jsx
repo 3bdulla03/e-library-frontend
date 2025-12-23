@@ -8,8 +8,12 @@ import Register from "./pages/Register"
 import Book from "./pages/Book"
 import Favorites from "./pages/Favorites"
 import "./App.css"
+import { Link, Route, Routes } from 'react-router-dom'
 
-import { CheckSession } from "./services/Auth"
+import Nav from "./components/Nav"
+import Home from "./pages/Home"
+import Favorites from "./pages/Favorites"
+import BookDetails from "./pages/BookDetails"
 
 const App = () => {
   const [user, setUser] = useState(null)
