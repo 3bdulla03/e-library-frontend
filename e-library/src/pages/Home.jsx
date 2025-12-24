@@ -4,21 +4,22 @@ import { useState } from "react"
 import { searchBooks } from "../services/googleBooks"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
+
 const Home = () => {
-  const [query, setQuery] = useState("")
+  const [title, setTitle] = useState("")
   const [books, setBooks] = useState([])
 
   const handleSearch = async (e) => {
     e.preventDefault()
-    const results = await searchBooks(query)
+    const results = await searchBooks(title)
     setBooks(results)
   }
   return (
     <>
       <form onSubmit={handleSearch}>
         <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           placeholder="Search books..."
         />
         <button>Search</button>
