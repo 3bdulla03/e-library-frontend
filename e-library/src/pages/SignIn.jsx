@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
-  const initialState = { email: "", password: "" }
+  const initialState = { name: "", password: "" }
 
   const [formValues, setFormValues] = useState(initialState)
 
@@ -17,7 +17,7 @@ const SignIn = ({ setUser }) => {
     const userData = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(userData)
-    navigate("/feed")
+    navigate("/") // it was feed to test it only and see what happend
   }
 
   return (
@@ -25,15 +25,14 @@ const SignIn = ({ setUser }) => {
       <img src="/images/signin.png" alt="Sign In Title Image" />
       <form className="col" onSubmit={handleSubmit}>
         <div className="input-wrapper">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="name">Name</label>
           <input
-            name="email"
-            type="email"
-            placeholder="example@example.com"
+            name="name"
+            type="name"
+            placeholder="username"
             onChange={handleChange}
-            value={formValues.email}
+            value={formValues.name}
             required
-            autoComplete="email"
           />
         </div>
         <div className="input-wrapper">
@@ -48,7 +47,7 @@ const SignIn = ({ setUser }) => {
             autoComplete="off"
           />
         </div>
-        <button disabled={!formValues.email || !formValues.password}>
+        <button disabled={!formValues.name || !formValues.password}>
           Sign In
         </button>
       </form>
