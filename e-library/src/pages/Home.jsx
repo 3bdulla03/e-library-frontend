@@ -16,26 +16,29 @@ const Home = () => {
   }
   return (
     <>
-      <form onSubmit={handleSearch}>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Search books..."
-        />
-        <button>Search</button>
-      </form>
+      <main className="home">
+        <form onSubmit={handleSearch} className="home-form">
+          <input
+            className="home-input"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Search books..."
+          />
+          <button className="home-button">Search</button>
+        </form>
 
-      <div>
-        {books.map((book) => (
-          <div key={book.id}>
-            <h3>{book.volumeInfo.title}</h3>
-            <p>{book.volumeInfo.authors?.join(", ")}</p>
-            {book.volumeInfo.imageLinks?.thumbnail && (
+        <div className="books-grid">
+          {books.map((book) => (
+            <div key={book.id} className="book-card">
+              <h3>{book.volumeInfo.title}</h3>
+              <p>{book.volumeInfo.authors?.join(", ")}</p>
+              {book.volumeInfo.imageLinks?.thumbnail && (
               <img src={book.volumeInfo.imageLinks.thumbnail} />
             )}
-          </div>
-        ))}
-      </div>
+            </div>
+          ))}
+        </div>
+      </main>
     </>
   )
 }
