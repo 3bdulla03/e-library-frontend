@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   let navigate = useNavigate()
+
   const initialState = {
     name: "",
-    email: "",
     password: "",
     confirmPassword: "",
   }
@@ -20,9 +20,18 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await RegisterUser(formValues)
+    if (formValues.password !== formValues.confirmPassword) {
+      alert("Passwords don't match!")
+      return
+    }  
+    await RegisterUser({
+      name: formValues.name,
+      password: formValues.password
+    })
     setFormValues(initialState)
     navigate("/signin")
+
+
   }
 
   return (
@@ -40,19 +49,7 @@ const Register = () => {
             required
             autoComplete="name"
           />
-        </div>
-        <div className="input-wrapper">
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="email"
-            placeholder="example@example.com"
-            onChange={handleChange}
-            value={formValues.email}
-            required
-            autoComplete="email"
-          />
-        </div>
+        </div>  
         <div className="input-wrapper">
           <label htmlFor="password">Password</label>
           <input
@@ -79,9 +76,9 @@ const Register = () => {
         </div>
         <button
           disabled={
-            !formValues.email ||
-            (!formValues.password &&
-              formValues.password === formValues.confirmPassword)
+            !formValues.name ||
+            !formValues.password ||
+            !formValues.confirmPassword
           }
         >
           Register
