@@ -21,8 +21,8 @@ const SignIn = ({ setUser }) => {
   }
 
   return (
-    <div className="col signin">
-      <img src="/images/signin.png" alt="Sign In Title Image" />
+    <div className="col register">
+      <h2>Sign In</h2>
       <form className="col" onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="name">Name</label>
