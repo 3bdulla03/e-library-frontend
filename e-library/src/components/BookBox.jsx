@@ -5,11 +5,11 @@ const BookBox = ({ book }) => {
     <>
       <div className="card book-card" onClick={book.onClick}>
         <div className="img-wrapper">
-          <img src={book.background_image} alt={book.name} />
+          <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
         </div>
         <div className="info-wrapper flex-col">
           <h3>{book.name}</h3>
-          <p>{book.author}</p>
+          <p>{book.volumeInfo.authors?.join(", ")}</p>
         </div>
       </div>
     </>
