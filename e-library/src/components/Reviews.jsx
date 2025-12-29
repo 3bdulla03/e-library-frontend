@@ -20,7 +20,7 @@ const Reviews = ({ bookId }) => {
   const handleSubmit = async () => {
     if (!newReview) return
     try {
-      const addedReview = await AddReview(bookId, newReview)
+      const addedReview = await AddReview(bookId, {message: newReview})
       setReviews([...reviews, addedReview])
       setNewReview("")
     } catch (error) {
@@ -34,7 +34,7 @@ const Reviews = ({ bookId }) => {
       <div>
         {reviews.map((review) => (
           <div key={review._id}>
-            <h4>{review.userName}</h4>
+            <h4>{review.user?.name}</h4>
             <p>{review.message}</p>
           </div>
         ))}
