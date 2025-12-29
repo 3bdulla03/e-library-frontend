@@ -10,3 +10,14 @@ export const searchBooks = async (bookTitle) => {
   console.log(data)
   return data.items || []
 }
+
+export const getBookDetails = async (bookId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${bookId}?key=${API_KEY}`)
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.error("Error fetching book details:", error)
+    return null
+  }
+} 
