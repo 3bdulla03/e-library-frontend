@@ -6,7 +6,7 @@ const BookBox = ({ book, clicked }) => {
   const thumbnail = book.volumeInfo.imageLinks?.thumbnail
 
   return (
-    <div onClick={clicked()}>
+    <div onClick={()=>clicked()}>
         {thumbnail ? (
           <img
             src={thumbnail}
