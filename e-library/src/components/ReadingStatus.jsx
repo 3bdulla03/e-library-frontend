@@ -25,17 +25,21 @@ const ReadingStatus = ({ bookId, user }) => {
   }
 
   const handleSave = async () => {
-    if (!user) {
-      alert("Please Sign in!")
+    if (!selectedStatus) {
+      alert("Please select a status!")
       return
     }
 
     try {
       await setReadingStatus(bookId, selectedStatus)
       setCurrentStatus(selectedStatus)
-      alert("Status saved !")
+      alert("Status saved!")
     } catch (error) {
-      alert("Error saving status")
+      if (error.response?.status === 401) {
+        alert("Please sign in!")
+      } else {
+        alert("Error saving status")
+      }
     }
   }
 

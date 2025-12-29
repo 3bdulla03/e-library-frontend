@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { GetFavorites } from "../services/Favorites"
 import { getBookDetails } from "../services/googleBooks"
 import "../App.css"
+import ReadingStatus from "../components/ReadingStatus"
 
-const BookDetails = ({ bookData }) => {
+const BookDetails = ({ bookData,user }) => {
   const info = bookData.volumeInfo
   return (
     <div className="book-view">
@@ -30,6 +31,7 @@ const BookDetails = ({ bookData }) => {
           {info.description}
         </p>
       </div>
+      <ReadingStatus bookId={bookData.id} user={user} />
     </div>
   )
 }
