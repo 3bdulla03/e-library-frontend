@@ -1,12 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
-
 const BookBox = ({ book, clicked }) => {
-
   const thumbnail = book.volumeInfo.imageLinks?.thumbnail
 
   return (
-    <div onClick={()=>clicked()}>
+    <div onClick={()=>clicked(book.id)}>
         {thumbnail ? (
           <img
             src={thumbnail}
