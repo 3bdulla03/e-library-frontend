@@ -4,6 +4,7 @@ import { useState } from "react"
 import { searchBooks } from "../services/googleBooks"
 import BookBox from "../components/BookBox"
 import { AddFavorite } from "../services/Favorites"
+import BookDetails from "./BookDetails"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
 
@@ -11,6 +12,7 @@ const Home = () => {
   const [title, setTitle] = useState("")
   const [books, setBooks] = useState([])
   const [isBox, setIsBox] = useState(true)
+  const [bookData, setBookData] = useState(null)
 
   const handleSearch = async (e) => {
     e.preventDefault()
@@ -28,8 +30,13 @@ const Home = () => {
     }
   }
 
-  const openBook = ()=>{
+  const openBook = (id) => {
     setIsBox(false)
+    books.forEach((book) => {
+      if (book.id == id) {
+        setBookData(book)
+      }
+    })
   }
 
   return (
@@ -48,10 +55,12 @@ const Home = () => {
         {isBox ? (
           <div className="books-grid">
             {books.map((book) => (
-              <BookBox key={book.id} book={book} clicked={openBook}/>
+              <BookBox key={book.id} book={book} clicked={openBook} />
             ))}
           </div>
-        ) : <BookDetails data={data} />}
+        ) : (
+          <BookDetails bookData={bookData} />
+        )}
       </main>
     </>
   )
