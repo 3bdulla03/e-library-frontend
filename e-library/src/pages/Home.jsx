@@ -41,13 +41,7 @@ const Home = () => {
 
         <div className="books-grid">
           {books.map((book) => (
-            <div key={book.id} className="book-card">
-              <h3>{book.volumeInfo.title}</h3>
-              <p>{book.volumeInfo.authors?.join(", ")}</p>
-              {book.volumeInfo.imageLinks?.thumbnail && (
-              <img src={book.volumeInfo.imageLinks.thumbnail} />
-            )}
-            </div>
+            <BookBox key={book.id} book={book} />
           ))}
         </div>
       </main>

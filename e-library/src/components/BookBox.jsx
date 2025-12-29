@@ -1,17 +1,26 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const BookBox = ({ book }) => {
+
+  const thumbnail = book.volumeInfo.imageLinks?.thumbnail
+
   return (
     <>
-      <div className="card book-card" onClick={book.onClick}>
-        <div className="img-wrapper">
-          <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
-        </div>
-        <div className="info-wrapper flex-col">
-          <h3>{book.name}</h3>
-          <p>{book.volumeInfo.authors?.join(", ")}</p>
-        </div>
-      </div>
+      <Link to={`/bookdetails/${book.id}`} className="book-card">
+        {thumbnail ? (
+          <img 
+            src={thumbnail} 
+            alt={book.volumeInfo.title}
+            className="book-image"
+          />
+        ) : (
+          <div className="book-no-image">No Image</div>
+        )}
+
+        <h3 className="book-title">{book.volumeInfo.title}</h3>
+        <p className="book-authors">{book.volumeInfo.authors?.join(", ")}</p>
+      </Link>
     </>
   )
 }
