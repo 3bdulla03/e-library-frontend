@@ -326,3 +326,36 @@ nav {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
 }
+.book-view {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-thumbnail {
+  width: 128px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-title {
+  margin: 0 0 10px;
+}
+
+.book-authors,
+.book-category {
+  margin: 5px 0;
+  color: #555;
+}
+
+.book-summary {
+  margin-top: 10px;
+  line-height: 1.5;
+}
