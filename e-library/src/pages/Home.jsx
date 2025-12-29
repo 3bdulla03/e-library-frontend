@@ -43,7 +43,13 @@ const navigate = useNavigate()
   return user ? (
     <>
       <main className="home">
-        <form onSubmit={handleSearch} className="home-form">
+
+
+        {isBox ? (
+
+
+<div>
+<form onSubmit={handleSearch} className="home-form">
           <input
             className="home-input"
             value={title}
@@ -53,11 +59,12 @@ const navigate = useNavigate()
           <button className="home-button">Search</button>
         </form>
 
-        {isBox ? (
+
           <div className="books-grid">
             {books.map((book) => (
               <BookBox key={book.id} book={book} clicked={openBook} />
             ))}
+          </div>
           </div>
         ) : (
           <BookDetails bookData={bookData} />
