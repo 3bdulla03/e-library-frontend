@@ -12,6 +12,8 @@ import { CheckSession } from "./services/Auth"
 const App = () => {
   const [user, setUser] = useState(null)
 
+  console.log("User in App:", user)
+
   const handleLogOut = () => {
     // Resets all auth related state and clears localStorage
     setUser(null)
@@ -37,8 +39,8 @@ const App = () => {
           <Route path="/" element={<Home user={user} />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/book/:id" element={<BookDetails />} /> 
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/book/:id" element={<BookDetails user={user}/>} /> 
+          <Route path="/favorites" element={<Favorites user={user} />} />
         </Routes>
       </main>
     </>

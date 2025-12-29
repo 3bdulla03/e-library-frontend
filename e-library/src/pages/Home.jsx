@@ -67,7 +67,7 @@ const navigate = useNavigate()
           </div>
           </div>
         ) : (
-          <BookDetails bookData={bookData} />
+          <BookDetails bookData={bookData} user={user}/>
         )}
       </main>
     </>
