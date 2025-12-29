@@ -20,4 +20,4 @@ export const getBookDetails = async (bookId) => {
     console.error("Error fetching book details:", error)
     return null
   }
-} 
+}

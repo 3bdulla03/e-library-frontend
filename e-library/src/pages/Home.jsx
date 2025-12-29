@@ -3,13 +3,14 @@ import Nav from "../components/Nav"
 import { useState } from "react"
 import { searchBooks } from "../services/googleBooks"
 import BookBox from "../components/BookBox"
-import { AddFavorite } from '../services/Favorites'
+import { AddFavorite } from "../services/Favorites"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
 
 const Home = () => {
   const [title, setTitle] = useState("")
   const [books, setBooks] = useState([])
+  const [isBox, setIsBox] = useState(true)
 
   const handleSearch = async (e) => {
     e.preventDefault()
@@ -26,6 +27,11 @@ const Home = () => {
       alert("can't add to favorites")
     }
   }
+
+  const openBook = ()=>{
+    setIsBox(false)
+  }
+
   return (
     <>
       <main className="home">
@@ -39,11 +45,13 @@ const Home = () => {
           <button className="home-button">Search</button>
         </form>
 
-        <div className="books-grid">
-          {books.map((book) => (
-            <BookBox key={book.id} book={book} />
-          ))}
-        </div>
+        {isBox ? (
+          <div className="books-grid">
+            {books.map((book) => (
+              <BookBox key={book.id} book={book} clicked={openBook}/>
+            ))}
+          </div>
+        ) : <BookDetails data={data} />}
       </main>
     </>
   )

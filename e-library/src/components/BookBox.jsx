@@ -1,16 +1,15 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const BookBox = ({ book }) => {
+const BookBox = ({ book, clicked }) => {
 
   const thumbnail = book.volumeInfo.imageLinks?.thumbnail
 
   return (
-    <>
-      <Link to={`/bookdetails/${book.id}`} className="book-card">
+    <div onClick={clicked()}>
         {thumbnail ? (
-          <img 
-            src={thumbnail} 
+          <img
+            src={thumbnail}
             alt={book.volumeInfo.title}
             className="book-image"
           />
@@ -20,8 +19,7 @@ const BookBox = ({ book }) => {
 
         <h3 className="book-title">{book.volumeInfo.title}</h3>
         <p className="book-authors">{book.volumeInfo.authors?.join(", ")}</p>
-      </Link>
-    </>
+    </div>
   )
 }
 
