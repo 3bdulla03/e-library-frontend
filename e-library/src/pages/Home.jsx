@@ -4,13 +4,15 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { searchBooks } from "../services/googleBooks"
 import BookBox from "../components/BookBox"
-import { AddFavorite } from '../services/Favorites'
+import { AddFavorite } from "../services/Favorites"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
 
 const Home = ({user}) => {
   const [title, setTitle] = useState("")
   const [books, setBooks] = useState([])
+  const [isBox, setIsBox] = useState(true)
+
 const navigate = useNavigate()
   const handleSearch = async (e) => {
     e.preventDefault()
@@ -27,6 +29,10 @@ const navigate = useNavigate()
       alert("can't add to favorites")
     }
   }
+
+  const openBook = ()=>{
+    setIsBox(false)
+  }
   return user ? (
     <>
       <main className="home">
@@ -40,11 +46,13 @@ const navigate = useNavigate()
           <button className="home-button">Search</button>
         </form>
 
-        <div className="books-grid">
-          {books.map((book) => (
-            <BookBox key={book.id} book={book} />
-          ))}
-        </div>
+        {isBox ? (
+          <div className="books-grid">
+            {books.map((book) => (
+              <BookBox key={book.id} book={book} clicked={openBook}/>
+            ))}
+          </div>
+        ) : <BookDetails data={data} />}
       </main>
     </>
   ) :(
