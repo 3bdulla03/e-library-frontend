@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn"
 import Register from "./pages/Register"
 import Favorites from "./pages/Favorites"
 import "./App.css"
+import BookDetails from "./pages/BookDetails"  
 import { Route, Routes } from "react-router-dom"
 import { CheckSession } from "./services/Auth"
 
@@ -26,15 +27,17 @@ const App = () => {
     if (token) {
       checkToken()
     }
+
   }, [])
   return (
     <>
       <Nav user={user} handleLogOut={handleLogOut} />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home user={user} />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/book/:id" element={<BookDetails />} /> 
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>

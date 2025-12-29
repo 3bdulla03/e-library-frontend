@@ -1,6 +1,7 @@
 import React from "react"
 import Nav from "../components/Nav"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { searchBooks } from "../services/googleBooks"
 import BookBox from "../components/BookBox"
 import { AddFavorite } from "../services/Favorites"
@@ -8,12 +9,13 @@ import BookDetails from "./BookDetails"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
 
-const Home = () => {
+const Home = ({user}) => {
   const [title, setTitle] = useState("")
   const [books, setBooks] = useState([])
   const [isBox, setIsBox] = useState(true)
   const [bookData, setBookData] = useState(null)
 
+const navigate = useNavigate()
   const handleSearch = async (e) => {
     e.preventDefault()
     const results = await searchBooks(title)
@@ -38,8 +40,7 @@ const Home = () => {
       }
     })
   }
-
-  return (
+  return user ? (
     <>
       <main className="home">
         <form onSubmit={handleSearch} className="home-form">
@@ -63,6 +64,11 @@ const Home = () => {
         )}
       </main>
     </>
+  ) :(
+    <div className="protected">
+    <h3>Oops! You must be signed in to do that!</h3>
+    <button onClick={() => navigate('/signin')}>Sign In</button>
+  </div>
   )
 }
 
