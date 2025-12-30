@@ -1,16 +1,31 @@
-# React + Vite
+# e-library-frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📚 E-Library App
 
-Currently, two official plugins are available:
+A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows users to search for books, view details, manage reading lists, and write reviews [web:2]. This project integrates with the **Google Books API** to fetch book data and provides a custom backend for user authentication and content management [memory:126].
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+*   **User Authentication:** Secure Register & Login using JSON Web Tokens (JWT) [memory:130].
+*   **Book Search:** Search and browse books using the Google Books API [memory:126].
+*   **Book Details:** View comprehensive information including summaries, authors, and categories.
+*   **Reviews System:**
+    *   Read reviews from other users.
+    *   Add, Edit, and Delete your own reviews (CRUD) [memory:133].
+*   **User Interaction:**
+    *   Track Reading Status.
+    *   Add books to Favorites.
+*   **Responsive Design:** Built with React and CSS for a clean user interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend
+*   **React (Vite):** Fast, component-based UI [memory:133].
+*   **React Router DOM:** Client-side routing.
+*   **Axios:** HTTP client for API requests.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend
+*   **Node.js & Express:** RESTful API server.
+*   **MongoDB & Mongoose:** NoSQL database for storing users and reviews.
+*   **JWT (JSON Web Tokens):** Secure authentication middleware [memory:130].
+*   **Cors:** Handling Cross-Origin Resource Sharing.
