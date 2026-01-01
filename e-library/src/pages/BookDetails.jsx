@@ -5,10 +5,22 @@ import { GetFavorites } from "../services/Favorites"
 import { getBookDetails } from "../services/googleBooks"
 import "../App.css"
 import ReadingStatus from "../components/ReadingStatus"
-import { AddFavorite } from "../services/Favorites"
+import { AddFavorite, RemoveFavorite } from "../services/Favorites"
 
 const BookDetails = ({ bookData, user }) => {
+  const [alreadyFav, setAlreadyFav] = useState(false)
   const info = bookData.volumeInfo
+
+  useEffect(() => {
+    checkIfFav()
+  }, [])
+
+  const checkIfFav = async () => {
+    const allFav = await GetFavorites()
+    const foundMach = allFav.find((fav) => fav.id == bookData.id)
+    console.log(foundMach)
+    foundMach==undefined || foundMach == null ? setAlreadyFav(true) : setAlreadyFav(false)
+  }
 
   const handleAddFavorite = async (bookId) => {
     try {
@@ -17,6 +29,15 @@ const BookDetails = ({ bookData, user }) => {
     } catch (error) {
       console.log(error)
       alert("can't add to favorites")
+    }
+  }
+
+  const handleRemoveFromFav = async (bookId) => {
+    try {
+      RemoveFavorite(bookId)
+    } catch (error) {
+      console.log(error)
+      alert("can't remove favorites")
     }
   }
 
@@ -46,9 +67,15 @@ const BookDetails = ({ bookData, user }) => {
         </p>
       </div>
       <ReadingStatus bookId={bookData.id} user={user} />
-      <button onClick={() => handleAddFavorite(bookData.id)}>
-        Add to favorites
-      </button>
+      {alreadyFav ? (
+        <button onClick={() => handleRemoveFromFav(bookData.id)}>
+          remove from fav
+        </button>
+      ) : (
+        <button onClick={() => handleAddFavorite(bookData.id)}>
+          Add to favorites
+        </button>
+      )}
     </div>
   )
 }
