@@ -20,7 +20,7 @@ const Favorites = () => {
             loadedBooks.push({ ...data, favoriteId: fav._id })
           }
         }
-        
+
         setBooks(loadedBooks)
       } catch (error) {
         console.log(error)
