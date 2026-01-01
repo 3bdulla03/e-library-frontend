@@ -12,8 +12,6 @@ import { CheckSession } from "./services/Auth"
 const App = () => {
   const [user, setUser] = useState(null)
 
-  console.log("User in App:", user)
-
   const handleLogOut = () => {
     // Resets all auth related state and clears localStorage
     setUser(null)

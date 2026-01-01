@@ -29,6 +29,7 @@ const BookDetails = ({ bookData, user }) => {
     try {
       await AddFavorite(bookId)
       alert("Book added to favorites")
+      setAlreadyFav(true)
     } catch (error) {
       console.log(error)
       alert("can't add to favorites")
@@ -38,6 +39,8 @@ const BookDetails = ({ bookData, user }) => {
   const handleRemoveFromFav = async (bookId) => {
     try {
       RemoveFavorite(bookId)
+      alert("Removed successful")
+      setAlreadyFav(false)
     } catch (error) {
       console.log(error)
       alert("can't remove favorites")
