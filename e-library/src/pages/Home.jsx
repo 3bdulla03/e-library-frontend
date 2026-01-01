@@ -4,7 +4,6 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { searchBooks } from "../services/googleBooks"
 import BookBox from "../components/BookBox"
-import { AddFavorite } from "../services/Favorites"
 import BookDetails from "./BookDetails"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
@@ -20,16 +19,6 @@ const navigate = useNavigate()
     e.preventDefault()
     const results = await searchBooks(title)
     setBooks(results)
-  }
-
-  const handleAddFavorite = async (bookId) => {
-    try {
-      await AddFavorite(bookId)
-      alert("Book added to favorites")
-    } catch (error) {
-      console.log(error)
-      alert("can't add to favorites")
-    }
   }
 
   const openBook = (id) => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getBookStatus, setReadingStatus } from "../services/Favorites"
+import { getBookStatus, setReadingStatus } from "../services/readingStatus.js"
 
 const ReadingStatus = ({ bookId, user }) => {
 
@@ -47,9 +47,9 @@ const ReadingStatus = ({ bookId, user }) => {
   return (
     <div className="reading-status">
       <h3>Status: {currentStatus || "Not set yet"}</h3>
-      
-      <select 
-        value={selectedStatus} 
+
+      <select
+        value={selectedStatus}
         onChange={(e) => setSelectedStatus(e.target.value)}
 
       >
