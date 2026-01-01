@@ -17,9 +17,12 @@ const BookDetails = ({ bookData, user }) => {
 
   const checkIfFav = async () => {
     const allFav = await GetFavorites()
-    const foundMach = allFav.find((fav) => fav.id == bookData.id)
-    console.log(foundMach)
-    foundMach==undefined || foundMach == null ? setAlreadyFav(true) : setAlreadyFav(false)
+    console.log("all fav: ", allFav)
+    const foundMach = allFav.some(
+      (fav) => String(fav.bookId).trim() === String(bookData.id).trim()
+    )
+    console.log("already fav? : ", foundMach)
+    foundMach ? setAlreadyFav(true) : setAlreadyFav(false)
   }
 
   const handleAddFavorite = async (bookId) => {
