@@ -5,6 +5,7 @@ import { GetFavorites } from "../services/Favorites"
 import { getBookDetails } from "../services/googleBooks"
 import "../App.css"
 import ReadingStatus from "../components/ReadingStatus"
+import Reviews from "../components/Reviews"
 
 const BookDetails = ({ bookData,user }) => {
   const info = bookData.volumeInfo
@@ -32,6 +33,7 @@ const BookDetails = ({ bookData,user }) => {
         </p>
       </div>
       <ReadingStatus bookId={bookData.id} user={user} />
+      <Reviews bookId={bookData.id} user={user}/>
     </div>
   )
 }

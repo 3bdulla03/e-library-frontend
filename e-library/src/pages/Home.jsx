@@ -77,6 +77,7 @@ const navigate = useNavigate()
     <button onClick={() => navigate('/signin')}>Sign In</button>
   </div>
   )
+
 }
 
 export default Home
