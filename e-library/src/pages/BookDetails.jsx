@@ -6,6 +6,7 @@ import { getBookDetails } from "../services/googleBooks"
 import "../App.css"
 import ReadingStatus from "../components/ReadingStatus"
 import { AddFavorite, RemoveFavorite } from "../services/Favorites"
+import Reviews from "../components/Reviews"
 
 const BookDetails = ({ bookData, user }) => {
   const [alreadyFav, setAlreadyFav] = useState(false)
@@ -82,6 +83,11 @@ const BookDetails = ({ bookData, user }) => {
           Add to favorites
         </button>
       )}
+      <div>
+        <Reviews  bookId={bookData.id}/>
+
+
+      </div>
     </div>
   )
 }
