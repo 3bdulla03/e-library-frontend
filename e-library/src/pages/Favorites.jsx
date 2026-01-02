@@ -3,10 +3,13 @@ import Nav from "../components/Nav"
 import { useState, useEffect } from "react"
 import { GetFavorites } from "../services/Favorites"
 import { getBookDetails } from "../services/googleBooks"
+import BookBox from "../components/BookBox"
+import BookDetails from "./BookDetails"
 
-const Favorites = () => {
+const Favorites = ({ user }) => {
   const [books, setBooks] = useState([])
-
+  const [isBookDetails, setIsBookDetails] = useState(false) // same as isSearch useState in Home
+  const [bookData, setBookData] = useState(null)
   useEffect(() => {
     const fetchUserFavorites = async () => {
       try {
@@ -20,7 +23,7 @@ const Favorites = () => {
             loadedBooks.push({ ...data, favoriteId: fav._id })
           }
         }
-        
+
         setBooks(loadedBooks)
       } catch (error) {
         console.log(error)
@@ -29,23 +32,31 @@ const Favorites = () => {
     fetchUserFavorites()
   }, [])
 
+  const openBook = (id) => {
+    setIsBookDetails(true)
+    books.forEach((book) => {
+      if (book.id == id) {
+        console.log(book)
+        setBookData(book)
+      }
+    })
+  }
+
   return (
-    <>
-      <div>
-        {books.map((book) => (
-          <div key={book.favoriteId}>
-            <h3>{book.volumeInfo?.title}</h3>
-            <p>{book.volumeInfo?.authors?.join(", ")}</p>
-            {book.volumeInfo?.imageLinks?.thumbnail && (
-              <img
-                src={book.volumeInfo.imageLinks.thumbnail}
-                alt={book.volumeInfo.title}
-              />
-            )}
-          </div>
-        ))}
-      </div>
-    </>
+    <main className="home">
+      {isBookDetails ? (
+        <>
+          <BookDetails bookData={bookData} user={user} />
+          <button onClick={() => setIsSearch(true)}>Back</button>
+        </>
+      ) : (
+        <div className="books-grid">
+          {books.map((book) => (
+            <BookBox key={book.id} book={book} clicked={openBook} />
+          ))}
+        </div>
+      )}
+    </main>
   )
 }
 
