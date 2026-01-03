@@ -57,7 +57,7 @@ const Reviews = ({ bookId, user }) => {
 
   const saveEdit = async (reviewId) => {
     try {
-      const updated = await UpdateReview(reviewId, editContent )
+      const updated = await UpdateReview(reviewId, editContent)
       setReviews(reviews.map((r) => (r._id === reviewId ? updated : r)))
       setEditingId(null)
     } catch (error) {
