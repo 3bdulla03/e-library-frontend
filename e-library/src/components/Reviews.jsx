@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { GetReviews, AddReview, DeleteReview, UpdateReview, getUserName } from '../services/Reviews'
-
+import React, { useState, useEffect } from "react"
+import {
+  GetReviews,
+  AddReview,
+  DeleteReview,
+  UpdateReview,
+  getUserName,
+} from "../services/Reviews"
 
 const Reviews = ({ bookId, user }) => {
   const [reviews, setReviews] = useState([])
@@ -9,10 +14,11 @@ const Reviews = ({ bookId, user }) => {
   const [editContent, setEditContent] = useState("")
 
   useEffect(() => {
+    console.log(user)
     const fetchReviews = async () => {
       try {
         const data = await GetReviews(bookId)
-        console.log('all reviews: ',data)
+        console.log("all reviews: ", data)
         setReviews(data)
       } catch (error) {
         console.log(error)
@@ -25,17 +31,17 @@ const Reviews = ({ bookId, user }) => {
     if (!newReview) return
     try {
       const addedReview = await AddReview(bookId, newReview, user)
-      console.log('reviews before: ', reviews)
+      console.log("reviews before: ", reviews)
       setReviews([...reviews, addedReview])
-      console.log('reviews after: ', reviews)
-      console.log('added: ', addedReview)
+      console.log("reviews after: ", reviews)
+      console.log("added: ", addedReview)
       setNewReview("")
     } catch (error) {
       alert("Error adding review")
     }
   }
 
-    const handleDelete = async (reviewId) => {
+  const handleDelete = async (reviewId) => {
     try {
       await DeleteReview(reviewId)
       setReviews(reviews.filter((r) => r._id !== reviewId))
@@ -59,7 +65,7 @@ const Reviews = ({ bookId, user }) => {
     }
   }
 
-  const getUserName = async (userId)=>{
+  const getUserName = async (userId) => {
     try {
       const name = await getUserName(userId)
       return name
@@ -69,63 +75,63 @@ const Reviews = ({ bookId, user }) => {
   }
 
   return (
-  <div className="reviews-section">
-    <h2>Reviews:</h2>
-    <div className="reviews-list">
-      {reviews.map((review) => (
-        <div key={review._id} className="review-card">
-          <h4>{review.userId?.name || "Unknown User"}</h4>
+    <div className="reviews-section">
+      <h2>Reviews:</h2>
+      <div className="reviews-list">
+        {reviews.map((review) => (
+          <div key={review._id} className="review-card">
+            <h4>{review.userId?.name || "Unknown User"}</h4>
 
-          {/* EDIT MODE TOGGLE */}
-          {editingId === review._id ? (
-            <div className="edit-box">
-              <input
-                type="text"
-                value={editContent}
-                onChange={(e) => setEditContent(e.target.value)}
-              />
-              <button onClick={() => saveEdit(review._id)}>Save</button>
-              <button onClick={() => setEditingId(null)}>Cancel</button>
-            </div>
-          ) : (
-            <p>{review.message}</p>
-          )}
+            {/* EDIT MODE TOGGLE */}
+            {editingId === review._id ? (
+              <div className="edit-box">
+                <input
+                  type="text"
+                  value={editContent}
+                  onChange={(e) => setEditContent(e.target.value)}
+                />
+                <button onClick={() => saveEdit(review._id)}>Save</button>
+                <button onClick={() => setEditingId(null)}>Cancel</button>
+              </div>
+            ) : (
+              <p>{review.message}</p>
+            )}
 
-          {/* SHOW BUTTONS ONLY IF USER OWNS THE REVIEW */}
-          {user && (user.id === review.user?._id || user._id === review.user?._id) && (
+            {/* SHOW BUTTONS ONLY IF USER OWNS THE REVIEW */}
             <div className="review-actions">
-              {editingId !== review._id && (
+              {user.id === review.userId._id && (
                 <>
                   <button onClick={() => startEditing(review)}>Edit</button>
-                  <button onClick={() => handleDelete(review._id)}>Delete</button>
+                  <button onClick={() => handleDelete(review._id)}>
+                    Delete
+                  </button>
                 </>
               )}
             </div>
-          )}
-          <hr />
-        </div>
-      ))}
-    </div>
-
-    {/* NEW REVIEW INPUT */}
-    {user ? (
-      <div className="add-review-box">
-        <h3>Add a Review:</h3>
-        <input
-          type="text"
-          value={newReview}
-          placeholder="Write your review here..."
-          onChange={(e) => setNewReview(e.target.value)}
-        />
-        <button onClick={handleSubmit} disabled={!newReview}>
-          Submit
-        </button>
+            <hr />
+          </div>
+        ))}
       </div>
-    ) : (
-      <p>Please log in to add a review.</p>
-    )}
-  </div>
-)
+
+      {/* NEW REVIEW INPUT */}
+      {user ? (
+        <div className="add-review-box">
+          <h3>Add a Review:</h3>
+          <input
+            type="text"
+            value={newReview}
+            placeholder="Write your review here..."
+            onChange={(e) => setNewReview(e.target.value)}
+          />
+          <button onClick={handleSubmit} disabled={!newReview}>
+            Submit
+          </button>
+        </div>
+      ) : (
+        <p>Please log in to add a review.</p>
+      )}
+    </div>
+  )
 }
 
 export default Reviews
