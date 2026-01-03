@@ -61,6 +61,11 @@ const Reviews = ({ bookId, user }) => {
       setReviews(reviews.map((r) => (r._id === reviewId ? updated : r)))
       setEditingId(null)
     } catch (error) {
+      if (error.response?.status === 401) {
+        alert("Please sign in!")
+      } else {
+        alert("Error adding review")
+      }
       console.log(error)
     }
   }
