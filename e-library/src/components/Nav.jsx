@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { Logout } from "../services/Auth"
-import { Navigate } from "react-router-dom"
 
 const Nav = () => {
 
