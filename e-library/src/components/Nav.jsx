@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import { Logout } from "../services/Auth"
+import { Navigate } from "react-router-dom"
 
 const Nav = () => {
 
@@ -17,6 +19,7 @@ const Nav = () => {
                 <div className="nav-links">
                     <Link to="/">Home</Link>
                     <Link to="/Favorites">Favorites</Link>
+                    <Link to="/signin" onClick={() => Logout()}>Logout</Link>
                 </div>
             </nav>
         </header></>

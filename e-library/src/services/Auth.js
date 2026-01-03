@@ -1,4 +1,5 @@
 import Client from "./api"
+import { Navigate } from "react-router-dom"
 
 export const RegisterUser = async (data) => {
   try {
@@ -26,6 +27,18 @@ export const CheckSession = async () => {
     const res = await Client.get("/auth/session")
     // Checks if there is a token and if it is valid
     return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const Logout = async () => {
+  console.log("logout clicked")
+  try {
+    localStorage.removeItem("token")
+    console.log("token removed")
+    return true
+    console.log('function ended')
   } catch (error) {
     throw error
   }
