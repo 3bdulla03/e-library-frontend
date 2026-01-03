@@ -82,7 +82,7 @@ const Reviews = ({ bookId, user }) => {
           <div key={review._id} className="review-card">
             <h4>{review.userId?.name || "Unknown User"}</h4>
 
-            {/* EDIT MODE TOGGLE */}
+            {/* edit button clicked */}
             {editingId === review._id ? (
               <div className="edit-box">
                 <input
@@ -97,7 +97,7 @@ const Reviews = ({ bookId, user }) => {
               <p>{review.message}</p>
             )}
 
-            {/* SHOW BUTTONS ONLY IF USER OWNS THE REVIEW */}
+            {/* Show buttons only if user owns the review */}
             <div className="review-actions">
               {user.id === review.userId._id && (
                 <>
@@ -113,7 +113,7 @@ const Reviews = ({ bookId, user }) => {
         ))}
       </div>
 
-      {/* NEW REVIEW INPUT */}
+      {/* new review input */}
       {user ? (
         <div className="add-review-box">
           <h3>Add a Review:</h3>

@@ -17,7 +17,7 @@ const SignIn = ({ setUser }) => {
     const userData = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(userData)
-    navigate("/") // it was feed to test it only and see what happend
+    navigate("/")
   }
 
   return (
@@ -51,7 +51,7 @@ const SignIn = ({ setUser }) => {
           Sign In
         </button>
         <p>
-          Don't have an accountt? <Link to="/register">Register here</Link>
+          Don't have an account? <Link to="/register">Register here</Link>
         </p>
       </form>
     </div>
