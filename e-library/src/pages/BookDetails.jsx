@@ -6,8 +6,9 @@ import { getBookDetails } from "../services/googleBooks"
 import "../App.css"
 import ReadingStatus from "../components/ReadingStatus"
 import { AddFavorite, RemoveFavorite } from "../services/Favorites"
+import Reviews from "../components/Reviews"
 
-const BookDetails = ({ bookData, user }) => {
+const BookDetails = ({ bookData, user}) => {
   const [alreadyFav, setAlreadyFav] = useState(false)
   const info = bookData.volumeInfo
 
@@ -48,41 +49,46 @@ const BookDetails = ({ bookData, user }) => {
   }
 
   return (
-    <div className="book-view">
-      <img
-        src={info.imageLinks?.thumbnail}
-        alt={info.title}
-        className="book-thumbnail"
-      />
+    <>
+      <div className="book-view">
+        <img
+          src={info.imageLinks?.thumbnail}
+          alt={info.title}
+          className="book-thumbnail"
+        />
 
-      <div className="book-info">
-        <h2 className="book-title">{info.title || "No title available"}</h2>
+        <div className="book-info">
+          <h2 className="book-title">{info.title || "No title available"}</h2>
 
-        <p className="book-authors">
-          <strong>Author:</strong> {info.authors}
-        </p>
+          <p className="book-authors">
+            <strong>Author:</strong> {info.authors}
+          </p>
 
-        <p className="book-category">
-          <strong>Category:</strong> {info.categories}
-        </p>
+          <p className="book-category">
+            <strong>Category:</strong> {info.categories}
+          </p>
 
-        <p className="book-summary">
-          <strong>Summary:</strong>
-          <br />
-          {info.description}
-        </p>
+          <p className="book-summary">
+            <strong>Summary:</strong>
+            <br />
+            {info.description}
+          </p>
+        </div>
+        <ReadingStatus bookId={bookData.id} user={user} />
+        {alreadyFav ? (
+          <button onClick={() => handleRemoveFromFav(bookData.id)}>
+            remove from fav
+          </button>
+        ) : (
+          <button onClick={() => handleAddFavorite(bookData.id)}>
+            Add to favorites
+          </button>
+        )}
       </div>
-      <ReadingStatus bookId={bookData.id} user={user} />
-      {alreadyFav ? (
-        <button onClick={() => handleRemoveFromFav(bookData.id)}>
-          remove from fav
-        </button>
-      ) : (
-        <button onClick={() => handleAddFavorite(bookData.id)}>
-          Add to favorites
-        </button>
-      )}
-    </div>
+      <div className="reviews">
+        <Reviews bookId={bookData.id} user={user} />
+      </div>
+    </>
   )
 }
 

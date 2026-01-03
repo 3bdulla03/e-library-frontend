@@ -47,7 +47,7 @@ const Favorites = ({ user }) => {
       {isBookDetails ? (
         <>
           <BookDetails bookData={bookData} user={user} />
-          <button onClick={() => setIsSearch(true)}>Back</button>
+          <button onClick={() => setIsBookDetails(false)}>Back</button>
         </>
       ) : (
         <div className="books-grid">
