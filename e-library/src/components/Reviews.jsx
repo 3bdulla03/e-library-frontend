@@ -14,11 +14,9 @@ const Reviews = ({ bookId, user }) => {
   const [editContent, setEditContent] = useState("")
 
   useEffect(() => {
-    console.log(user)
     const fetchReviews = async () => {
       try {
         const data = await GetReviews(bookId)
-        console.log("all reviews: ", data)
         setReviews(data)
       } catch (error) {
         console.log(error)
@@ -31,10 +29,7 @@ const Reviews = ({ bookId, user }) => {
     if (!newReview) return
     try {
       const addedReview = await AddReview(bookId, newReview, user)
-      console.log("reviews before: ", reviews)
       setReviews([...reviews, addedReview])
-      console.log("reviews after: ", reviews)
-      console.log("added: ", addedReview)
       setNewReview("")
     } catch (error) {
       alert("Error adding review")

@@ -20,7 +20,7 @@ const ReadingStatus = ({ bookId, user }) => {
         setSelectedStatus(data.status)
       }
     } catch (error) {
-      console.log("no staus found")
+      throw error
     }
   }
 

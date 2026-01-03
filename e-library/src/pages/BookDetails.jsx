@@ -21,7 +21,6 @@ const BookDetails = ({ bookData, user}) => {
     const foundMach = allFav.some(
       (fav) => String(fav.bookId).trim() === String(bookData.id).trim()
     )
-    console.log("already fav? : ", foundMach)
     foundMach ? setAlreadyFav(true) : setAlreadyFav(false)
   }
 
