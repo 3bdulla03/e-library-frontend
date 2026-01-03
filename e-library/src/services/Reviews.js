@@ -9,9 +9,10 @@ export const GetReviews = async (bookId) => {
   }
 }
 
-export const AddReview = async (bookId, message) => {
+export const AddReview = async (bookId, message, user) => {
   try {
-    const res = await Client.post(`/reviews/${bookId}`, { message })
+    console.log("user: ",user, 'bookId: ', bookId, "message: ", message)
+    const res = await Client.post(`/reviews/${bookId}`, { message, user })
     return res.data
   } catch (error) {
     throw error
@@ -20,7 +21,7 @@ export const AddReview = async (bookId, message) => {
 
 export const UpdateReview = async (reviewId, message) => {
   try {
-    const res = await Client.put(`/reviews/${reviewId}`, message)
+    const res = await Client.put(`/reviews/${reviewId}`, {message})
     return res.data
   } catch (error) {
     throw error
@@ -30,6 +31,15 @@ export const UpdateReview = async (reviewId, message) => {
 export const DeleteReview = async (reviewId) => {
   try {
     const res = await Client.delete(`/reviews/${reviewId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getUserName = async (userId) =>{
+  try {
+    const res = await Client.get(`users/${userId}`)
     return res.data
   } catch (error) {
     throw error

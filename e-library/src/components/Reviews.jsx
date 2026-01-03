@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { GetReviews, AddReview, DeleteReview, UpdateReview } from '../services/Reviews'
+import { GetReviews, AddReview, DeleteReview, UpdateReview, getUserName } from '../services/Reviews'
 
 
 const Reviews = ({ bookId, user }) => {
-  console.log("Book ID in Reviews:", bookId)
   const [reviews, setReviews] = useState([])
   const [newReview, setNewReview] = useState("")
   const [editingId, setEditingId] = useState(null)
@@ -11,22 +10,25 @@ const Reviews = ({ bookId, user }) => {
 
   useEffect(() => {
     const fetchReviews = async () => {
-      
       try {
         const data = await GetReviews(bookId)
+        console.log('all reviews: ',data)
         setReviews(data)
       } catch (error) {
         console.log(error)
       }
     }
     fetchReviews()
-  }, [bookId])
+  }, [bookId, newReview])
 
   const handleSubmit = async () => {
     if (!newReview) return
     try {
-      const addedReview = await AddReview(bookId, newReview)
-      setReviews([...reviews, {addedReview, user: user}])
+      const addedReview = await AddReview(bookId, newReview, user)
+      console.log('reviews before: ', reviews)
+      setReviews([...reviews, addedReview])
+      console.log('reviews after: ', reviews)
+      console.log('added: ', addedReview)
       setNewReview("")
     } catch (error) {
       alert("Error adding review")
@@ -57,13 +59,22 @@ const Reviews = ({ bookId, user }) => {
     }
   }
 
+  const getUserName = async (userId)=>{
+    try {
+      const name = await getUserName(userId)
+      return name
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
   <div className="reviews-section">
     <h2>Reviews:</h2>
     <div className="reviews-list">
       {reviews.map((review) => (
         <div key={review._id} className="review-card">
-          <h4>{review.user?.name || "Unknown User"}</h4>
+          <h4>{review.userId?.name || "Unknown User"}</h4>
 
           {/* EDIT MODE TOGGLE */}
           {editingId === review._id ? (

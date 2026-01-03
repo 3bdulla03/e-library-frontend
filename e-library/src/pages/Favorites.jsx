@@ -36,7 +36,6 @@ const Favorites = ({ user }) => {
     setIsBookDetails(true)
     books.forEach((book) => {
       if (book.id == id) {
-        console.log(book)
         setBookData(book)
       }
     })

@@ -18,7 +18,6 @@ const BookDetails = ({ bookData, user}) => {
 
   const checkIfFav = async () => {
     const allFav = await GetFavorites()
-    console.log("all fav: ", allFav)
     const foundMach = allFav.some(
       (fav) => String(fav.bookId).trim() === String(bookData.id).trim()
     )
