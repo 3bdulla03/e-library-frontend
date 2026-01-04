@@ -45,21 +45,30 @@ const ReadingStatus = ({ bookId, user }) => {
 
 
   return (
-    <div className="reading-status">
-      <h3>Status: {currentStatus || "Not set yet"}</h3>
+    <div className="reading-status-card">
+      <div className="status-header">
+        <span className="status-label">Current Status:</span>
+        <span className="status-badge">
+          {currentStatus || "Not set yet"}
+        </span>
+      </div>
 
-      <select
-        value={selectedStatus}
-        onChange={(e) => setSelectedStatus(e.target.value)}
+      <div className="status-controls">
+        <select
+          className="status-select"
+          value={selectedStatus}
+          onChange={(e) => setSelectedStatus(e.target.value)}
+        >
+          <option value="" disabled>Select Status</option>
+          <option value="ToRead">To Read</option>
+          <option value="Reading">Reading</option>
+          <option value="Finished">Finished</option>
+        </select>
 
-      >
-        <option value="">Select Status</option>
-        <option value="ToRead">To Read</option>
-        <option value="Reading">Reading</option>
-        <option value="Finished">Finished</option>
-      </select>
-
-      <button onClick = {handleSave}>Save!</button>
+        <button className="status-save-btn" onClick={handleSave}>
+          Save
+        </button>
+      </div>
     </div>
   )
 }

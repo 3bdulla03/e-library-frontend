@@ -53,7 +53,7 @@ const Home = ({ user }) => {
         ) : (
           <>
             <BookDetails bookData={bookData} user={user} />
-            <button onClick={() => setIsSearch(true)}>Back</button>
+            <button className="back-btn" onClick={() => setIsSearch(true)}>Back</button>
           </>
         )}
       </main>
