@@ -21,7 +21,6 @@ const BookDetails = ({ bookData, user}) => {
     const foundMach = allFav.some(
       (fav) => String(fav.bookId).trim() === String(bookData.id).trim()
     )
-    console.log("already fav? : ", foundMach)
     foundMach ? setAlreadyFav(true) : setAlreadyFav(false)
   }
 
@@ -31,8 +30,12 @@ const BookDetails = ({ bookData, user}) => {
       alert("Book added to favorites")
       setAlreadyFav(true)
     } catch (error) {
+      if (error.response?.status === 401) {
+        alert("Please sign in!")
+      } else {
+        alert("Error adding to favorite")
+      }
       console.log(error)
-      alert("can't add to favorites")
     }
   }
 

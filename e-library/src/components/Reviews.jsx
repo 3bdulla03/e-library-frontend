@@ -14,11 +14,9 @@ const Reviews = ({ bookId, user }) => {
   const [editContent, setEditContent] = useState("")
 
   useEffect(() => {
-    console.log(user)
     const fetchReviews = async () => {
       try {
         const data = await GetReviews(bookId)
-        console.log("all reviews: ", data)
         setReviews(data)
       } catch (error) {
         console.log(error)
@@ -31,10 +29,7 @@ const Reviews = ({ bookId, user }) => {
     if (!newReview) return
     try {
       const addedReview = await AddReview(bookId, newReview, user)
-      console.log("reviews before: ", reviews)
       setReviews([...reviews, addedReview])
-      console.log("reviews after: ", reviews)
-      console.log("added: ", addedReview)
       setNewReview("")
     } catch (error) {
       alert("Error adding review")
@@ -57,10 +52,15 @@ const Reviews = ({ bookId, user }) => {
 
   const saveEdit = async (reviewId) => {
     try {
-      const updated = await UpdateReview(reviewId, { message: editContent })
+      const updated = await UpdateReview(reviewId, editContent)
       setReviews(reviews.map((r) => (r._id === reviewId ? updated : r)))
       setEditingId(null)
     } catch (error) {
+      if (error.response?.status === 401) {
+        alert("Please sign in!")
+      } else {
+        alert("Error adding review")
+      }
       console.log(error)
     }
   }
@@ -131,7 +131,7 @@ const Reviews = ({ bookId, user }) => {
             <button 
               className="submit-review-btn" 
               onClick={handleSubmit} 
-              disabled={!newReview.trim()}
+              disabled={!newReview}
             >
               Post Review
             </button>
