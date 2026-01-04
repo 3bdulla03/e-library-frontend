@@ -1,5 +1,3 @@
-# e-library-backend
-
 # 📚 E-Library App
 
 A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows users to search for books, view details, manage reading lists, and write reviews. This project integrates with the **Google Books API** to fetch book data and provides a custom backend for user authentication and content management.
@@ -13,9 +11,14 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
     *   Read reviews from other users.
     *   Add, Edit, and Delete your own reviews (CRUD).
 *   **User Interaction:**
-    *   Track Reading Status.
+    *   Track Reading Status (To Read, Reading, Finished).
     *   Add books to Favorites.
 *   **Responsive Design:** Built with React and CSS for a clean user interface.
+
+## 🌍 Deployed Version
+
+*   **Live App:** [Link]
+*   
 
 ## 🛠️ Tech Stack
 
@@ -28,4 +31,26 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
 *   **Node.js & Express:** RESTful API server.
 *   **MongoDB & Mongoose:** NoSQL database for storing users and reviews.
 *   **JWT (JSON Web Tokens):** Secure authentication middleware.
-*   **Cors:** Handling Cross-Origin Resource Sharing.
+
+## 🧩 ERD (Entity Relationship Diagram)
+
+![ERD Diagram](https://i.ibb.co/FkZBjhVc/image.png)
+
+## 🎨 Wireframes
+
+### Screens
+
+**Home / Search**
+![Home Wireframe](https://i.ibb.co/wF8GK1cW/image.png)
+
+**Favorites Page**
+![Favorites Wireframe](https://i.ibb.co/xKk1djSZ/image.png)
+
+**Book Details**
+![Book Details Wireframe](https://i.ibb.co/S7DX2gt7/image.png)
+
+## 👥 Team Members
+
+*   **[Ali Shamlooh]** - [GitHub Profile](https://github.com/Ali19Shamlooh)
+*   **[Ammar Shabib]** - [GitHub Profile](https://github.com/ammarys-w)
+*   **[Abdulla Khamis]** - [GitHub Profile](https://github.com/3bdulla03)
