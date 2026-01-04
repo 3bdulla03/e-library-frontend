@@ -75,61 +75,73 @@ const Reviews = ({ bookId, user }) => {
   }
 
   return (
-    <div className="reviews-section">
-      <h2>Reviews:</h2>
+    <div className="reviews-section-card">
+      <h3 className="reviews-heading">Community Reviews ({reviews.length})</h3>
+      
       <div className="reviews-list">
+        {reviews.length === 0 && <p className="no-reviews">No reviews yet. Be the first!</p>}
+        
         {reviews.map((review) => (
-          <div key={review._id} className="review-card">
-            <h4>{review.userId?.name || "Unknown User"}</h4>
-
-            {/* EDIT MODE TOGGLE */}
-            {editingId === review._id ? (
-              <div className="edit-box">
-                <input
-                  type="text"
-                  value={editContent}
-                  onChange={(e) => setEditContent(e.target.value)}
-                />
-                <button onClick={() => saveEdit(review._id)}>Save</button>
-                <button onClick={() => setEditingId(null)}>Cancel</button>
+          <div key={review._id} className="review-item">
+            <div className="review-header">
+              <div className="user-avatar">
+                {review.userId?.name?.charAt(0).toUpperCase()}
               </div>
-            ) : (
-              <p>{review.message}</p>
-            )}
+              <span className="user-name">{review.userId?.name}</span>
+            </div>
 
-            {/* SHOW BUTTONS ONLY IF USER OWNS THE REVIEW */}
-            <div className="review-actions">
-              {user.id === review.userId._id && (
-                <>
-                  <button onClick={() => startEditing(review)}>Edit</button>
-                  <button onClick={() => handleDelete(review._id)}>
-                    Delete
-                  </button>
-                </>
+            <div className="review-body">
+              {editingId === review._id ? (
+                <div className="edit-box">
+                  <textarea
+                    className="edit-textarea"
+                    value={editContent}
+                    onChange={(e) => setEditContent(e.target.value)}
+                  />
+                  <div className="edit-buttons">
+                    <button className="btn-save-sm" onClick={() => saveEdit(review._id)}>Save</button>
+                    <button className="btn-cancel-sm" onClick={() => setEditingId(null)}>Cancel</button>
+                  </div>
+                </div>
+              ) : (
+                <p className="review-text">{review.message}</p>
               )}
             </div>
-            <hr />
+
+            {user && user.id === review.userId?._id && editingId !== review._id && (
+              <div className="review-actions">
+                <span className="action-link edit" onClick={() => startEditing(review)}>Edit</span>
+                <span className="action-link delete" onClick={() => handleDelete(review._id)}>Delete</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      {/* NEW REVIEW INPUT */}
-      {user ? (
-        <div className="add-review-box">
-          <h3>Add a Review:</h3>
-          <input
-            type="text"
-            value={newReview}
-            placeholder="Write your review here..."
-            onChange={(e) => setNewReview(e.target.value)}
-          />
-          <button onClick={handleSubmit} disabled={!newReview}>
-            Submit
-          </button>
-        </div>
-      ) : (
-        <p>Please log in to add a review.</p>
-      )}
+      <div className="add-review-container">
+        {user ? (
+          <>
+            <textarea
+              className="review-input"
+              value={newReview}
+              placeholder="What did you think about this book?"
+              onChange={(e) => setNewReview(e.target.value)}
+              rows={3}
+            />
+            <button 
+              className="submit-review-btn" 
+              onClick={handleSubmit} 
+              disabled={!newReview.trim()}
+            >
+              Post Review
+            </button>
+          </>
+        ) : (
+          <div className="login-prompt">
+            Please log in to share your thoughts.
+          </div>
+        )}
+      </div>
     </div>
   )
 }

@@ -711,3 +711,241 @@ nav {
 .book-image-section {
   flex-shrink: 0;
 }
+
+.reviews-section-card {
+  margin-top: 2rem;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 2rem;
+}
+
+.reviews-heading {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+}
+
+/* Individual Review Item */
+.review-item {
+  border-bottom: 1px solid #edf2f7;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+/* Header: Avatar + Name */
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.user-name {
+  font-weight: 700;
+  color: #2d3748;
+  font-size: 0.95rem;
+}
+
+/* Body Text */
+.review-text {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+  padding-left: 3rem; /* Indent text to align with name, not avatar */
+}
+
+/* Edit & Delete Links */
+.review-actions {
+  padding-left: 3rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.action-link {
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.action-link.edit { color: #3182ce; }
+.action-link.delete { color: #e53e3e; }
+.action-link:hover { opacity: 0.7; }
+
+/* Edit Mode Box */
+.edit-box {
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edit-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-save-sm {
+  padding: 0.4rem 1rem;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-cancel-sm {
+  padding: 0.4rem 1rem;
+  background: #edf2f7;
+  color: #4a5568;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* Add Review Form */
+.add-review-container {
+  margin-top: 2rem;
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.review-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: border 0.2s;
+  background: white;
+  margin-bottom: 1rem;
+}
+
+.review-input:focus {
+  border-color: #667eea;
+}
+
+.submit-review-btn {
+  background: #2d3748;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.submit-review-btn:hover {
+  background: #1a202c;
+  transform: translateY(-1px);
+}
+
+.submit-review-btn:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.no-reviews {
+  color: #a0aec0;
+  font-style: italic;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.login-prompt {
+  text-align: center;
+  color: #718096;
+  font-weight: 500;
+}
+
+.add-review-container {
+  margin-top: 2rem;
+  background: #f8fafc; /* Keep the light grey background */
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Puts the button on the right */
+  gap: 0.8rem; /* Space between input and button */
+}
+
+/* Update: The Textarea */
+.review-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  outline: none;
+  background: white;
+  margin-bottom: 0; /* Remove bottom margin, flex gap handles it */
+  min-height: 80px; /* Give it some default height */
+}
+
+.review-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Update: Submit Button */
+.submit-review-btn {
+  background: #2d3748;
+  color: white;
+  padding: 0.6rem 1.5rem; /* Slightly smaller vertical padding */
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-end; /* Ensures button stays on the right */
+}
+
+.submit-review-btn:hover:not(:disabled) {
+  background: #1a202c;
+  transform: translateY(-1px);
+}
+
+.submit-review-btn:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
