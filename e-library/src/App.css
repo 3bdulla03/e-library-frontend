@@ -451,3 +451,263 @@ nav {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.book-details-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 300px 1fr; 
+  gap: 3rem;
+  align-items: start;
+}
+
+.book-sidebar {
+  position: sticky;
+  top: 100px; 
+}
+
+.book-cover-wrapper {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.book-cover-large {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.book-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-action {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-add {
+  background: #667eea;
+  color: white;
+}
+
+.btn-remove {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.reading-status-wrapper {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.book-hero-title {
+  font-size: 2.5rem;
+  color: #1a202c;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.book-meta {
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.meta-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #718096;
+  font-weight: 700;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.book-description h3, 
+.book-reviews-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.description-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 3rem;
+}
+
+.reading-status-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Subtle lift */
+}
+
+/* Header Row */
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+/* Neutral Badge Style */
+.status-badge {
+  background-color: #edf2f7; /* Neutral light grey */
+  color: #2d3748;           /* Dark grey text */
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid #cbd5e0;
+}
+
+/* Controls Row */
+.status-controls {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* Dropdown */
+.status-select {
+  flex-grow: 1;
+  padding: 0.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 0.95rem;
+  color: #2d3748;
+  cursor: pointer;
+  outline: none;
+}
+
+.status-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* Save Button */
+.status-save-btn {
+  padding: 0.6rem 1.2rem;
+  background-color: #2d3748;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.status-save-btn:hover {
+  background-color: #1a202c;
+}
+
+.book-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Keeps title and status at the top */
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 0.5rem; /* Reduced margin */
+}
+
+.book-title {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #1a202c; /* Darker for better contrast */
+  line-height: 1.1;
+  font-weight: 800;
+  flex: 1; /* Title takes all available space */
+  padding-top: 0.5rem; /* Slight visual alignment with the status box */
+}
+
+/* 2. Compact Status Box */
+.reading-status-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 260px; /* Fixed width to prevent it from getting too wide */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  flex-shrink: 0; /* Prevents squishing */
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0; /* Removed extra margin */
+}
+
+.status-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 3. Author Section Alignment */
+.book-meta {
+  margin-top: 1rem; /* Pushes author down a bit */
+  color: #4a5568;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 4. Fix image alignment just in case */
+.book-image-section {
+  flex-shrink: 0;
+}

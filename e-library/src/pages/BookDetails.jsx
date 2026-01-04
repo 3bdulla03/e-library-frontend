@@ -50,41 +50,63 @@ const BookDetails = ({ bookData, user}) => {
   return (
     <>
       <div className="book-view">
-        <img
-          src={info.imageLinks?.thumbnail}
-          alt={info.title}
-          className="book-thumbnail"
-        />
+        <div className="book-image-section">
+          <img
+            src={info.imageLinks?.thumbnail}
+            alt={info.title}
+            className="book-thumbnail"
+          />
+        </div>
 
         <div className="book-info">
-          <h2 className="book-title">{info.title || "No title available"}</h2>
+          
+          {/* --- CHANGED: Header Row with Title + Status --- */}
+          <div className="book-header-row">
+            <h2 className="book-title">{info.title || "No title available"}</h2>
+            <div className="status-wrapper-top">
+               <ReadingStatus bookId={bookData.id} user={user} />
+            </div>
+          </div>
 
-          <p className="book-authors">
-            <strong>Author:</strong> {info.authors}
+          <p className="book-meta">
+            <strong>Author:</strong> <span>{info.authors?.join(", ")}</span>
           </p>
 
-          <p className="book-category">
-            <strong>Category:</strong> {info.categories}
+          <p className="book-meta">
+            <strong>Category:</strong> <span>{info.categories?.join(", ")}</span>
           </p>
 
-          <p className="book-summary">
+          <div className="book-summary">
             <strong>Summary:</strong>
-            <br />
-            {info.description}
-          </p>
+            <div 
+              className="summary-text"
+              dangerouslySetInnerHTML={{ __html: info.description || "No description available." }}
+            />
+          </div>
+
+          <div className="action-area">
+            {/* ReadingStatus removed from here */}
+            
+            {alreadyFav ? (
+              <button 
+                className="fav-btn remove" 
+                onClick={() => handleRemoveFromFav(bookData.id)}
+              >
+                Remove from Favorites
+              </button>
+            ) : (
+              <button 
+                className="fav-btn add" 
+                onClick={() => handleAddFavorite(bookData.id)}
+              >
+                Add to Favorites
+              </button>
+            )}
+          </div>
         </div>
-        <ReadingStatus bookId={bookData.id} user={user} />
-        {alreadyFav ? (
-          <button onClick={() => handleRemoveFromFav(bookData.id)}>
-            remove from fav
-          </button>
-        ) : (
-          <button onClick={() => handleAddFavorite(bookData.id)}>
-            Add to favorites
-          </button>
-        )}
       </div>
-      <div className="reviews">
+
+      <div className="reviews-container">
         <Reviews bookId={bookData.id} user={user} />
       </div>
     </>
