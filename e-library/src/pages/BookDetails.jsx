@@ -60,11 +60,27 @@ const BookDetails = ({ bookData, user}) => {
 
         <div className="book-info">
           
-          {/* --- CHANGED: Header Row with Title + Status --- */}
           <div className="book-header-row">
             <h2 className="book-title">{info.title || "No title available"}</h2>
-            <div className="status-wrapper-top">
+            
+            <div className="header-actions">
                <ReadingStatus bookId={bookData.id} user={user} />
+               
+               {alreadyFav ? (
+                  <button 
+                    className="fav-header-btn remove" 
+                    onClick={() => handleRemoveFromFav(bookData.id)}
+                  >
+                    Remove from Favorites
+                  </button>
+                ) : (
+                  <button 
+                    className="fav-header-btn add" 
+                    onClick={() => handleAddFavorite(bookData.id)}
+                  >
+                    Add to Favorites
+                  </button>
+                )}
             </div>
           </div>
 
@@ -82,26 +98,6 @@ const BookDetails = ({ bookData, user}) => {
               className="summary-text"
               dangerouslySetInnerHTML={{ __html: info.description || "No description available." }}
             />
-          </div>
-
-          <div className="action-area">
-            {/* ReadingStatus removed from here */}
-            
-            {alreadyFav ? (
-              <button 
-                className="fav-btn remove" 
-                onClick={() => handleRemoveFromFav(bookData.id)}
-              >
-                Remove from Favorites
-              </button>
-            ) : (
-              <button 
-                className="fav-btn add" 
-                onClick={() => handleAddFavorite(bookData.id)}
-              >
-                Add to Favorites
-              </button>
-            )}
           </div>
         </div>
       </div>

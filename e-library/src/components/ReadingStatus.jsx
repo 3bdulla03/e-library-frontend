@@ -48,7 +48,6 @@ const ReadingStatus = ({ bookId, user }) => {
     <div className="reading-status-card">
       <div className="status-header">
         <span className="status-label">Current Status:</span>
-        {/* Simple badge class, no color logic */}
         <span className="status-badge">
           {currentStatus || "Not set yet"}
         </span>

@@ -582,10 +582,9 @@ nav {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Subtle lift */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-/* Header Row */
 .status-header {
   display: flex;
   align-items: center;
@@ -598,10 +597,9 @@ nav {
   color: #718096;
 }
 
-/* Neutral Badge Style */
 .status-badge {
-  background-color: #edf2f7; /* Neutral light grey */
-  color: #2d3748;           /* Dark grey text */
+  background-color: #edf2f7; 
+  color: #2d3748;
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
   font-size: 0.9rem;
@@ -609,13 +607,11 @@ nav {
   border: 1px solid #cbd5e0;
 }
 
-/* Controls Row */
 .status-controls {
   display: flex;
   gap: 0.8rem;
 }
 
-/* Dropdown */
 .status-select {
   flex-grow: 1;
   padding: 0.6rem;
@@ -633,7 +629,6 @@ nav {
   box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
 }
 
-/* Save Button */
 .status-save-btn {
   padding: 0.6rem 1.2rem;
   background-color: #2d3748;
@@ -652,23 +647,22 @@ nav {
 .book-header-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Keeps title and status at the top */
+  align-items: flex-start; 
   gap: 2rem;
   width: 100%;
-  margin-bottom: 0.5rem; /* Reduced margin */
+  margin-bottom: 0.5rem; 
 }
 
 .book-title {
   margin: 0;
   font-size: 2.2rem;
-  color: #1a202c; /* Darker for better contrast */
+  color: #1a202c; 
   line-height: 1.1;
   font-weight: 800;
-  flex: 1; /* Title takes all available space */
-  padding-top: 0.5rem; /* Slight visual alignment with the status box */
+  flex: 1; 
+  padding-top: 0.5rem; 
 }
 
-/* 2. Compact Status Box */
 .reading-status-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -677,16 +671,16 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  width: 260px; /* Fixed width to prevent it from getting too wide */
+  width: 260px; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  flex-shrink: 0; /* Prevents squishing */
+  flex-shrink: 0; 
 }
 
 .status-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0; /* Removed extra margin */
+  margin-bottom: 0; 
 }
 
 .status-label {
@@ -697,9 +691,8 @@ nav {
   letter-spacing: 0.5px;
 }
 
-/* 3. Author Section Alignment */
 .book-meta {
-  margin-top: 1rem; /* Pushes author down a bit */
+  margin-top: 1rem;
   color: #4a5568;
   font-size: 1.1rem;
   display: flex;
@@ -707,7 +700,6 @@ nav {
   gap: 0.5rem;
 }
 
-/* 4. Fix image alignment just in case */
 .book-image-section {
   flex-shrink: 0;
 }
@@ -725,7 +717,6 @@ nav {
   margin-bottom: 1.5rem;
 }
 
-/* Individual Review Item */
 .review-item {
   border-bottom: 1px solid #edf2f7;
   padding: 1.5rem 0;
@@ -738,7 +729,6 @@ nav {
   border-bottom: none;
 }
 
-/* Header: Avatar + Name */
 .review-header {
   display: flex;
   align-items: center;
@@ -764,16 +754,14 @@ nav {
   font-size: 0.95rem;
 }
 
-/* Body Text */
 .review-text {
   color: #4a5568;
   line-height: 1.6;
   font-size: 1rem;
   margin: 0;
-  padding-left: 3rem; /* Indent text to align with name, not avatar */
+  padding-left: 3rem;
 }
 
-/* Edit & Delete Links */
 .review-actions {
   padding-left: 3rem;
   display: flex;
@@ -791,7 +779,6 @@ nav {
 .action-link.delete { color: #e53e3e; }
 .action-link:hover { opacity: 0.7; }
 
-/* Edit Mode Box */
 .edit-box {
   padding-left: 3rem;
   display: flex;
@@ -833,7 +820,6 @@ nav {
   font-size: 0.85rem;
 }
 
-/* Add Review Form */
 .add-review-container {
   margin-top: 2rem;
   background: #f8fafc;
@@ -896,17 +882,16 @@ nav {
 
 .add-review-container {
   margin-top: 2rem;
-  background: #f8fafc; /* Keep the light grey background */
+  background: #f8fafc; 
   padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* Puts the button on the right */
-  gap: 0.8rem; /* Space between input and button */
+  align-items: flex-end;
+  gap: 0.8rem; 
 }
 
-/* Update: The Textarea */
 .review-input {
   width: 100%;
   padding: 1rem;
@@ -917,8 +902,8 @@ nav {
   resize: vertical;
   outline: none;
   background: white;
-  margin-bottom: 0; /* Remove bottom margin, flex gap handles it */
-  min-height: 80px; /* Give it some default height */
+  margin-bottom: 0; 
+  min-height: 80px;
 }
 
 .review-input:focus {
@@ -926,17 +911,16 @@ nav {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Update: Submit Button */
 .submit-review-btn {
   background: #2d3748;
   color: white;
-  padding: 0.6rem 1.5rem; /* Slightly smaller vertical padding */
+  padding: 0.6rem 1.5rem; 
   border: none;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  align-self: flex-end; /* Ensures button stays on the right */
+  align-self: flex-end; 
 }
 
 .submit-review-btn:hover:not(:disabled) {
@@ -948,4 +932,195 @@ nav {
   background: #cbd5e0;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+.book-view-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 1. Back Button Style */
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.back-btn:hover {
+  color: #2d3748;
+  transform: translateX(-4px);
+}
+
+.book-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.book-title {
+  flex: 1; 
+  margin: 0;
+  font-size: 1.3rem;
+  color: #1a202c;
+  line-height: 1.1;
+  font-weight: 800;
+  padding-top: 0.5rem;
+}
+
+.top-actions {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-end; 
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.fav-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: white;
+  border: 1px solid #cbd5e0;
+  color: #4a5568;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%; 
+  max-width: 260px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.fav-icon-btn:hover {
+  background: #f7fafc;
+  transform: translateY(-1px);
+}
+
+.fav-icon-btn.active {
+  background: #fff5f5;
+  color: #e53e3e; 
+  border-color: #fc8181;
+}
+
+.fav-icon-btn.active:hover {
+  background: #fed7d7;
+}
+
+.reviews-section-card {
+  margin-top: 2rem;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  padding: 2rem; 
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.reviews-heading {
+  font-size: 1.8rem;
+  color: #2d3748;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  margin-left: 0; 
+}
+
+.header-actions {
+  display: flex;
+  align-items: flex-start; 
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.fav-header-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  height: fit-content; 
+  margin-top: 0; 
+  font-size: 0.9rem;
+}
+
+.fav-header-btn.add {
+  background: #667eea;
+  color: white;
+}
+
+.fav-header-btn.remove {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.back-btn {
+  display: flex; 
+  align-items: center;
+  gap: 0.5rem; 
+  background: transparent; 
+  border: none;
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 600; 
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem; 
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto 1.5rem auto; 
+  width: fit-content;
+}
+
+.back-btn:hover {
+  color: #2d3748; 
+  transform: translateX(-6px); 
+}
+
+.back-btn:focus {
+  outline: none;
+  color: #667eea; 
+}.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto 1.5rem auto; 
+  
+  background: #2d3748;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.back-btn:hover {
+  background: #1a202c; 
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.back-btn:active {
+  transform: translateY(0);
 }
