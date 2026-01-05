@@ -1,13 +1,10 @@
-import React from "react"
-import Nav from "../components/Nav"
 import { useState, useEffect } from "react"
 import { GetFavorites } from "../services/Favorites"
-import { getBookDetails } from "../services/googleBooks"
 import "../App.css"
 import ReadingStatus from "../components/ReadingStatus"
 import { AddFavorite, RemoveFavorite } from "../services/Favorites"
 import Reviews from "../components/Reviews"
-
+import BookViewer from "../components/BookViewer"
 const BookDetails = ({ bookData, user}) => {
   const [alreadyFav, setAlreadyFav] = useState(false)
   const info = bookData.volumeInfo
@@ -62,23 +59,23 @@ const BookDetails = ({ bookData, user}) => {
         </div>
 
         <div className="book-info">
-          
+
           <div className="book-header-row">
             <h2 className="book-title">{info.title || "No title available"}</h2>
-            
+
             <div className="header-actions">
                <ReadingStatus bookId={bookData.id} user={user} />
-               
+
                {alreadyFav ? (
-                  <button 
-                    className="fav-header-btn remove" 
+                  <button
+                    className="fav-header-btn remove"
                     onClick={() => handleRemoveFromFav(bookData.id)}
                   >
                     Remove from Favorites
                   </button>
                 ) : (
-                  <button 
-                    className="fav-header-btn add" 
+                  <button
+                    className="fav-header-btn add"
                     onClick={() => handleAddFavorite(bookData.id)}
                   >
                     Add to Favorites
@@ -97,7 +94,7 @@ const BookDetails = ({ bookData, user}) => {
 
           <div className="book-summary">
             <strong>Summary:</strong>
-            <div 
+            <div
               className="summary-text"
               dangerouslySetInnerHTML={{ __html: info.description || "No description available." }}
             />
@@ -108,6 +105,8 @@ const BookDetails = ({ bookData, user}) => {
       <div className="reviews-container">
         <Reviews bookId={bookData.id} user={user} />
       </div>
+
+      <div><BookViewer googleBookId={bookData.id} className='viewer'/></div>
     </>
   )
 }
