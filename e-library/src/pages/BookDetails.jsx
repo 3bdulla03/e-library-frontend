@@ -106,7 +106,7 @@ const BookDetails = ({ bookData, user}) => {
         <Reviews bookId={bookData.id} user={user} />
       </div>
 
-      <div><BookViewer googleBookId={book.id}/></div>
+      <div><BookViewer googleBookId={bookData.id} className='viewer'/></div>
     </>
   )
 }
