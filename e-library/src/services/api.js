@@ -1,6 +1,6 @@
 import Axios from "axios"
 
-export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = "https://render.com/docs/web-services#port-binding"
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
