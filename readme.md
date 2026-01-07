@@ -17,8 +17,8 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
 
 ## 🌍 Deployed Version
 
-*   **Live App:** [deployed-version](https://3aaa-library.surge.sh/)
-*   
+*   **Live App(Front-end):** [deployed-version](https://3aaa-library.surge.sh/)
+*   **Back-end:** [deployed-version](https://e-library-h0w4.onrender.com/)   
 
 ## 🛠️ Tech Stack
 
@@ -54,4 +54,5 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
 *   **[Ali Shamlooh]** - [GitHub Profile](https://github.com/Ali19Shamlooh)
 *   **[Ammar Shabib]** - [GitHub Profile](https://github.com/ammarys-w)
 *   **[Abdulla Khamis]** - [GitHub Profile](https://github.com/3bdulla03)
+
 
