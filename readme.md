@@ -31,6 +31,10 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
 *   **Node.js & Express:** RESTful API server.
 *   **MongoDB & Mongoose:** NoSQL database for storing users and reviews.
 *   **JWT (JSON Web Tokens):** Secure authentication middleware.
+*   **Backend Repo:** [backend](https://github.com/3bdulla03/e-library-backend/blob/main/README.md)
+
+  ##  Trello
+* **Trello Link:** [trello](https://trello.com/invite/b/693a125e4a5ccdd391febc93/ATTI81eaeb34d3c151e2434c1d76d6b40784C3511497/library)
 
 ## 🧩 ERD (Entity Relationship Diagram)
 
@@ -54,5 +58,6 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
 *   **[Ali Shamlooh]** - [GitHub Profile](https://github.com/Ali19Shamlooh)
 *   **[Ammar Shabib]** - [GitHub Profile](https://github.com/ammarys-w)
 *   **[Abdulla Khamis]** - [GitHub Profile](https://github.com/3bdulla03)
+
 
 
