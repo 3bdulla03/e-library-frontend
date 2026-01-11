@@ -1,4 +1,4 @@
-# 📚 E-Library App
+# 📚 E-Library App ![App Logo](https://i.postimg.cc/jSK9pQ8y/AAA-library.png)
 
 A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows users to search for books, view details, manage reading lists, and write reviews. This project integrates with the **Google Books API** to fetch book data and provides a custom backend for user authentication and content management.
 
@@ -53,11 +53,17 @@ A full-stack **MERN** (MongoDB, Express, React, Node.js) application that allows
 **Book Details**
 ![Book Details Wireframe](https://i.ibb.co/S7DX2gt7/image.png)
 
+## **Future Enhancements**
+* **Personalized Recommendations:** Implement a recommendation engine suggesting books based on a user's favorites, past reviews, or reading history.
+* **Reading Challenges:** Let users set annual reading goals (e.g., "Read 20 books this year") with progress bars and achievement badges.
+* **Advanced Filtering:** Enable sorting by publication year, rating, page count, or language to refine search results from the Google Books API.
+
 ## 👥 Team Members
 
 *   **[Ali Shamlooh]** - [GitHub Profile](https://github.com/Ali19Shamlooh)
 *   **[Ammar Shabib]** - [GitHub Profile](https://github.com/ammarys-w)
 *   **[Abdulla Khamis]** - [GitHub Profile](https://github.com/3bdulla03)
+
 
 
 
